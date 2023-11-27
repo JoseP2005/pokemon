@@ -1,13 +1,10 @@
 package src.dominio;
-
 import java.io.Serializable;
 
-public class Planta extends Pokemon implements Serializable {
-
+public class Agua extends Pokemon implements Serializable{
     private static final long serialVersionUID = 1L;
-
-    public Planta(String nombre, int n_pokedex, String descripcion, double altura, double peso, String categoria, String habilidad, String tipo, String debilidad) {
-        super(nombre, n_pokedex, descripcion, altura, peso, categoria, habilidad, "Planta", "Fuego");
+    public Agua(String nombre, int n_pokedex, String descripcion, double altura, double peso, String categoria, String habilidad, String tipo, String debilidad) {
+        super(nombre, n_pokedex, descripcion, altura, peso, categoria, habilidad, "Agua", "Planta");
     }
     @Override
     public String obtenerDatosEspecificos() {
@@ -25,5 +22,5 @@ public class Planta extends Pokemon implements Serializable {
                 "Habilidad: " + getHabilidad() + "\n" +
                 "Tipo: " + getTipo() + "\n" +
                 "Debilidad: " + getDebilidad() + "\n";
-    }
+            }
 }

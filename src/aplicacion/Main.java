@@ -1,8 +1,9 @@
-package aplicacion;
+package src.aplicacion;
+import src.presentacion.Interfaz;
 
 public class Main {
-
     public static void main(String[] args) {
-        System.out.println("Hola mundo");
+        Interfaz interfaz = new Interfaz();
+        interfaz.iniciarPrograma();
     }
 }

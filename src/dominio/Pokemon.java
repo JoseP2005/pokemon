@@ -2,95 +2,91 @@ package src.dominio;
 
 public abstract class Pokemon {
     private String nombre;
-    private int nivel;
+    private int n_pokedex;
+    private String descripcion;
+    private double altura;
+    private double peso;
+    private String categoria;
+    private String habilidad;
     private String tipo;
-    private int vida;
-    private int ataque;
-    private int defensa;
-    private int velocidad;
-    private int ataqueEspecial;
-    private int defensaEspecial;
-    private double debilidad;
-    private double debilidadFinal;
+    private String debilidad;
 
-    public Pokemon(String nombre, int nivel, String tipo, int vida, int ataque, int defensa, int velocidad, int ataqueEspecial, int defensaEspecial, double debilidad, double debilidadFinal) {
+    public Pokemon(String nombre, int n_pokedex, String descripcion, double altura, double peso, String categoria, String habilidad, String tipo, String debilidad) {
         this.nombre = nombre;
-        this.nivel = nivel;
+        this.n_pokedex = n_pokedex;
+        this.descripcion = descripcion;
+        this.altura = altura;
+        this.peso = peso;
+        this.categoria = categoria;
+        this.habilidad = habilidad;
         this.tipo = tipo;
-        this.vida = vida;
-        this.ataque = ataque;
-        this.defensa = defensa;
-        this.velocidad = velocidad;
-        this.ataqueEspecial = ataqueEspecial;
-        this.defensaEspecial = defensaEspecial;
         this.debilidad = debilidad;
-        this.debilidadFinal = debilidadFinal;
     }
     public String getNombre() {
         return nombre;
     }
-    public int getNivel() {
-        return nivel;
+    public int getN_pokedex() {
+        return n_pokedex;
+    }
+    public String getDescripcion() {
+        return descripcion;
+    }
+    public double getAltura() {
+        return altura;
+    }
+
+    public double getPeso() {
+        return peso;
+    }
+    public String getCategoria() {
+        return categoria;
+    }
+    public String getHabilidad() {
+        return habilidad;
     }
     public String getTipo() {
         return tipo;
     }
-    public int getVida() {
-        return vida;
-    }
-    public int getAtaque() {
-        return ataque;
-    }
-    public int getDefensa() {
-        return defensa;
-    }
-    public int getVelocidad() {
-        return velocidad;
-    }
-    public int getAtaqueEspecial() {
-        return ataqueEspecial;
-    }
-    public int getDefensaEspecial() {
-        return defensaEspecial;
-    }
-    public double getDebilidad() {
+    public String getDebilidad() {
         return debilidad;
-    }
-    public double getDebilidadFinal() {
-        return debilidadFinal;
     }
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    public void setNivel(int nivel) {
-        this.nivel = nivel;
+    public void setN_pokedex(int n_pokedex) {
+        this.n_pokedex = n_pokedex;
+    }
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+    public void setAltura(double altura) {
+        this.altura = altura;
+    }
+    public void setPeso(double peso) {
+        this.peso = peso;
+    }
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
+    public void setHabilidad(String habilidad) {
+        this.habilidad = habilidad;
     }
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
-    public void setVida(int vida) {
-        this.vida = vida;
-    }
-    public void setAtaque(int ataque) {
-        this.ataque = ataque;
-    }
-    public void setDefensa(int defensa) {
-        this.defensa = defensa;
-    }
-    public void setVelocidad(int velocidad) {
-        this.velocidad = velocidad;
-    }
-    public void setAtaqueEspecial(int ataqueEspecial) {
-        this.ataqueEspecial = ataqueEspecial;
-    }
-    public void setDefensaEspecial(int defensaEspecial) {
-        this.defensaEspecial = defensaEspecial;
-    }
-    public void setDebilidad(double debilidad) {
+    public void setDebilidad(String debilidad) {
         this.debilidad = debilidad;
     }
-    public void setDebilidadFinal(double debilidadFinal) {
-        this.debilidadFinal = debilidadFinal;
+    public void modificarPokemon(String nombre, String descripcion, double altura, double peso, String categoria, String habilidad, String tipo, String debilidad) {
+        setNombre(nombre);
+        setDescripcion(descripcion);
+        setAltura(altura);
+        setPeso(peso);
+        setCategoria(categoria);
+        setHabilidad(habilidad);
+        setTipo(tipo);
+        setDebilidad(debilidad);
     }
-    public abstract double calcularDebilidad();
+    public abstract String obtenerDatosEspecificos();
+
 }
