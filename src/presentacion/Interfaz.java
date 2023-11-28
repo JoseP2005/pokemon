@@ -39,17 +39,21 @@ public class Interfaz {
                     break;
                 case 4:
                     mostrarInformacion();
+                    break;
                 case 5:
                     modificarPokemon();
                     break;
                 case 6:
-                    mostrarPokedex();
+                    eliminarPokemon();
                     break;
                 case 7:
+                    mostrarPokedex();
+                    break;
+                case 8:
                     guardarDatos();
                     System.out.println("Programa terminado.");
                     break;
-                case 8:
+                case 9:
                     System.out.println("Gracias por utilizar el programa.");
                     break;
                 default:
@@ -57,7 +61,7 @@ public class Interfaz {
                     break;
             }
 
-        } while (opcion != 8);
+        } while (opcion != 9);
     }
 
 
@@ -68,6 +72,7 @@ public class Interfaz {
         System.out.println("3. Crear Pokemon tipo Agua");
         System.out.println("4. Mostrar información de un Pokemon");
         System.out.println("5. Modificar Pokemon");
+        System.out.println("6. Eliminar Pokemon");
         System.out.println("6. Mostrar Pokedex");
         System.out.println("7. Guardar datos");
         System.out.println("8. Salir");
@@ -251,6 +256,27 @@ public class Interfaz {
             pokemonSeleccionado.modificarPokemon(nuevoNombre, nuevaDescripcion, nuevaAltura, nuevoPeso, nuevaCategoria, nuevaHabilidad, nuevoTipo, nuevaDebilidad);
 
             System.out.println("Pokemon modificado: " + pokemonSeleccionado);
+        } else {
+            System.out.println("El índice ingresado no es válido.");
+        }
+    }
+    private void eliminarPokemon() {
+        if (pokedex.isEmpty()) {
+            System.out.println("La Pokedex está vacía. No hay Pokémon para eliminar.");
+            return;
+        }
+
+        System.out.print("\nIngrese el índice del Pokémon que desea eliminar: ");
+        int indice = sc.nextInt();
+        sc.nextLine();
+
+        if (indice >= 0 && indice < pokedex.size()) {
+            Pokemon pokemonSeleccionado = pokedex.get(indice);
+
+            System.out.println("\n--- ELIMINANDO POKEMON ---");
+            System.out.println("Pokemon eliminado: " + pokemonSeleccionado);
+
+            pokedex.remove(indice);
         } else {
             System.out.println("El índice ingresado no es válido.");
         }

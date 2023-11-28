@@ -3,8 +3,6 @@
 	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
 H
 src/dominio/Pokemon.java,4\b\4b8fd3927681e2cc3d71eae2fd9841de11981348
-J
-src/dominio/Debilidad.java,1\5\1532a3c0893cb86222ceb9aabcf6071924560c75
 G
 src/dominio/Planta.java,3\9\39ee2dc16b3e0ca4a7ff52498401ac1a676a8dc1
 H
@@ -23,8 +21,6 @@ H
 -.idea/sonarlint/securityhotspotstore/index.pb,8\8\88a9255124c95bdc913197c120a8d560edc59c8e
 Å
 Q.idea/sonarlint/securityhotspotstore/b/7/b7413b15ac7f118d4e1fb85fde7a8587327c77b5,5\8\58be8204c5f2161e24597f64dd7ce06e3ad6926f
-Å
-Q.idea/sonarlint/securityhotspotstore/1/5/1532a3c0893cb86222ceb9aabcf6071924560c75,6\9\69e3a5464251cdf3ab5715e7f21890d80cb45397
 Å
 Q.idea/sonarlint/securityhotspotstore/4/b/4b8fd3927681e2cc3d71eae2fd9841de11981348,b\5\b5126a217a7c0f5d0aa3b43dff1a9f372945b173
 Å
@@ -47,3 +43,7 @@ w
 G.idea/sonarlint/issuestore/9/b/9bb926f72d1ba430f6b0d582c92269369b480dcf,f\b\fb2192a26b453367c9a8fb638ab68acaec332da1
 S
 #.idea/sonarlint/issuestore/index.pb,9\f\9fe84ebb15faf917b7def6236dba604453cc61e0
+8
+makefile,0\c\0c0610d12d971107a85160c6a927e94a1062a01a
+<
+manifest.txt,e\0\e06c4ed327c41a3b8dd1c849bc9017952d534de6
