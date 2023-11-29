@@ -1,22 +1,48 @@
-package src.presentacion;
+/**
+ * Copyright [2023] [Jose Andres Pascual]
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.You may obtain a copy of the License at
+ * http://www.apache.org/licenses/LICENSE-2.0Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
+ * either express or implied.See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package presentacion;
 
-import src.dominio.*;
+import dominio.Agua;
+import dominio.Fuego;
+import dominio.Planta;
+import dominio.Pokemon;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Clase Interfaz que permite la interacción con el usuario
+ */
 public class Interfaz {
-    private static final long serialVersionUID = 1L;
-
+    /**
+     * Lista que almacena los Pokémon en la Pokedex.
+     */
     private List<Pokemon> pokedex;
+    /**
+     * Objeto Scanner utilizado para la entrada de datos desde la consola.
+     */
     private Scanner sc;
 
+    /**
+     * Constructor de la clase Interfaz
+     */
     public Interfaz() {
         pokedex = new ArrayList<>();
         sc = new Scanner(System.in);
     }
 
+    /**
+     * Método principal que inicia la ejecución del programa.
+     */
     public void iniciarPrograma() {
         cargarDatos();
 
@@ -29,13 +55,13 @@ public class Interfaz {
 
             switch (opcion) {
                 case 1:
-                    crearPokemonPlanta();
+                    crearPokemon("Planta");
                     break;
                 case 2:
-                    crearPokemonAgua();
+                    crearPokemon("Fuego");
                     break;
                 case 3:
-                    crearPokemonFuego();
+                    crearPokemon("Agua");
                     break;
                 case 4:
                     mostrarInformacion();
@@ -64,7 +90,9 @@ public class Interfaz {
         } while (opcion != 9);
     }
 
-
+    /**
+     * Método privado que muestra el menú de opciones disponibles en la consola.
+     */
     private void mostrarMenu() {
         System.out.println("----------- MENÚ -----------");
         System.out.println("1. Crear Pokemon tipo Planta");
@@ -73,111 +101,66 @@ public class Interfaz {
         System.out.println("4. Mostrar información de un Pokemon");
         System.out.println("5. Modificar Pokemon");
         System.out.println("6. Eliminar Pokemon");
-        System.out.println("6. Mostrar Pokedex");
-        System.out.println("7. Guardar datos");
-        System.out.println("8. Salir");
+        System.out.println("7. Mostrar Pokedex");
+        System.out.println("8. Guardar datos");
+        System.out.println("9. Salir");
         System.out.print("Ingrese una opción: ");
     }
 
-    private void crearPokemonPlanta() {
-        System.out.print("\nIngrese la cantidad de Pokemon tipo Planta que desea añadir: ");
+    /**
+     * Método privado que permite al usuario crear Pokémon de un tipo específico.
+     *
+     * @param tipo El tipo de Pokémon a crear.
+     */
+    private void crearPokemon(String tipo) {
+        System.out.printf("\nIngrese la cantidad de Pokémon tipo %s que desea añadir: ", tipo);
         int cantidad = sc.nextInt();
         sc.nextLine();
 
         for (int i = 0; i < cantidad; i++) {
-            System.out.println("\n--- CREANDO POKEMON TIPO PLANTA " + (i + 1) + " ---");
-            System.out.print("Ingrese el nombre del Pokemon: ");
+            System.out.printf("\n--- CREANDO POKÉMON TIPO %s %d ---\n", tipo.toUpperCase(), i + 1);
+            System.out.print("Ingrese el nombre del Pokémon: ");
             String nombre = sc.nextLine();
-            System.out.print("Ingrese el número de la Pokedex: ");
+            System.out.print("Ingrese el número de la Pokédex: ");
             int n_pokedex = sc.nextInt();
             sc.nextLine();
-            System.out.print("Ingrese la descripción del Pokemon: ");
+            System.out.print("Ingrese la descripción del Pokémon: ");
             String descripcion = sc.nextLine();
-            System.out.print("Ingrese la altura del Pokemon: ");
+            System.out.print("Ingrese la altura del Pokémon: ");
             double altura = sc.nextDouble();
             sc.nextLine();
-            System.out.print("Ingrese el peso del Pokemon: ");
+            System.out.print("Ingrese el peso del Pokémon: ");
             double peso = sc.nextDouble();
             sc.nextLine();
-            System.out.print("Ingrese la categoría del Pokemon: ");
+            System.out.print("Ingrese la categoría del Pokémon: ");
             String categoria = sc.nextLine();
-            System.out.print("Ingrese la habilidad del Pokemon: ");
+            System.out.print("Ingrese la habilidad del Pokémon: ");
             String habilidad = sc.nextLine();
 
-            Pokemon planta = new Planta(nombre, n_pokedex, descripcion, altura, peso, categoria, habilidad, "Planta", "Fuego");
+            Pokemon nuevoPokemon;
+            switch (tipo) {
+                case "Planta":
+                    nuevoPokemon = new Planta(nombre, n_pokedex, descripcion, altura, peso, categoria, habilidad, "Planta", "Fuego");
+                    break;
+                case "Fuego":
+                    nuevoPokemon = new Fuego(nombre, n_pokedex, descripcion, altura, peso, categoria, habilidad, "Fuego", "Agua");
+                    break;
+                case "Agua":
+                    nuevoPokemon = new Agua(nombre, n_pokedex, descripcion, altura, peso, categoria, habilidad, "Agua", "Planta");
+                    break;
+                default:
+                    System.out.println("Tipo de Pokémon no válido.");
+                    return;
+            }
 
-            System.out.println("Pokemon tipo planta creado: " + planta);
-
-            agregarPokemon(planta);
-        }
-
-    }
-
-    private void crearPokemonFuego() {
-        System.out.print("\nIngrese la cantidad de Pokemon tipo Fuego que desea añadir: ");
-        int cantidad = sc.nextInt();
-        sc.nextLine();
-
-        for (int i = 0; i < cantidad; i++) {
-            System.out.println("\n--- CREANDO POKEMON TIPO FUEGO " + (i + 1) + " ---");
-            System.out.print("Ingrese el nombre del Pokemon: ");
-            String nombre = sc.nextLine();
-            System.out.print("Ingrese el número de la Pokedex: ");
-            int n_pokedex = sc.nextInt();
-            sc.nextLine();
-            System.out.print("Ingrese la descripción del Pokemon: ");
-            String descripcion = sc.nextLine();
-            System.out.print("Ingrese la altura del Pokemon: ");
-            double altura = sc.nextDouble();
-            sc.nextLine();
-            System.out.print("Ingrese el peso del Pokemon: ");
-            double peso = sc.nextDouble();
-            sc.nextLine();
-            System.out.print("Ingrese la categoría del Pokemon: ");
-            String categoria = sc.nextLine();
-            System.out.print("Ingrese la habilidad del Pokemon: ");
-            String habilidad = sc.nextLine();
-
-            Pokemon fuego = new Fuego(nombre, n_pokedex, descripcion, altura, peso, categoria, habilidad, "Planta", "Fuego");
-
-            System.out.println("Pokemon tipo fuego creado: " + fuego);
-
-            agregarPokemon(fuego);
-        }
-    }
-    private void crearPokemonAgua() {
-        System.out.print("\nIngrese la cantidad de Pokemon tipo Agua que desea añadir: ");
-        int cantidad = sc.nextInt();
-        sc.nextLine();
-
-        for (int i = 0; i < cantidad; i++) {
-            System.out.println("\n--- CREANDO POKEMON TIPO AGUA " + (i + 1) + " ---");
-            System.out.print("Ingrese el nombre del Pokemon: ");
-            String nombre = sc.nextLine();
-            System.out.print("Ingrese el número de la Pokedex: ");
-            int n_pokedex = sc.nextInt();
-            sc.nextLine();
-            System.out.print("Ingrese la descripción del Pokemon: ");
-            String descripcion = sc.nextLine();
-            System.out.print("Ingrese la altura del Pokemon: ");
-            double altura = sc.nextDouble();
-            sc.nextLine();
-            System.out.print("Ingrese el peso del Pokemon: ");
-            double peso = sc.nextDouble();
-            sc.nextLine();
-            System.out.print("Ingrese la categoría del Pokemon: ");
-            String categoria = sc.nextLine();
-            System.out.print("Ingrese la habilidad del Pokemon: ");
-            String habilidad = sc.nextLine();
-
-            Pokemon agua = new Agua(nombre, n_pokedex, descripcion, altura, peso, categoria, habilidad, "Agua", "Planta");
-
-            System.out.println("Pokemon tipo agua creado: " + agua);
-
-            agregarPokemon(agua);
+            System.out.println("Pokémon creado: " + nuevoPokemon);
+            agregarPokemon(nuevoPokemon);
         }
     }
 
+    /**
+     * Método que muestra la pokedex
+     */
     private void mostrarPokedex() {
         System.out.println("\n--- POKEDEX ---");
         for (Pokemon pokemon : pokedex) {
@@ -185,6 +168,9 @@ public class Interfaz {
         }
     }
 
+    /**
+     * Método que muestra la información de un pokemon
+     */
     private void mostrarInformacion() {
         if (pokedex.isEmpty()) {
             System.out.println("La Pokedex está vacío. No hay información para mostrar.");
@@ -215,10 +201,14 @@ public class Interfaz {
                 System.out.println("Tipo: Agua");
                 System.out.println("Debilidad: Planta");
             }
-        }else {
+        } else {
             System.out.println("El índice ingresado no es válido.");
         }
     }
+
+    /**
+     * Método que modifica un pokemon
+     */
     private void modificarPokemon() {
         if (pokedex.isEmpty()) {
             System.out.println("La Pokedex está vacía. No hay Pokémon para modificar.");
@@ -260,6 +250,10 @@ public class Interfaz {
             System.out.println("El índice ingresado no es válido.");
         }
     }
+
+    /**
+     * Método que elimina un pokemon
+     */
     private void eliminarPokemon() {
         if (pokedex.isEmpty()) {
             System.out.println("La Pokedex está vacía. No hay Pokémon para eliminar.");
@@ -282,6 +276,9 @@ public class Interfaz {
         }
     }
 
+    /**
+     * Método que guarda los datos
+     */
     private void guardarDatos() {
         try (PrintWriter writer = new PrintWriter(new FileWriter("pokedex.csv"))) {
             for (Pokemon pokemon : pokedex) {
@@ -303,6 +300,10 @@ public class Interfaz {
             System.out.println("Error al guardar los datos.");
         }
     }
+
+    /**
+     * Método que carga los datos
+     */
     private void cargarDatos() {
         pokedex.clear();
         try (BufferedReader reader = new BufferedReader(new FileReader("pokedex.csv"))) {
@@ -344,6 +345,12 @@ public class Interfaz {
             System.out.println("Error al cargar los datos desde el archivo CSV.");
         }
     }
+
+    /**
+     * Método que agrega un pokemon
+     *
+     * @param pokemon
+     */
     private void agregarPokemon(Pokemon pokemon) {
         pokedex.add(pokemon);
     }

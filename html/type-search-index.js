@@ -1,0 +1,1 @@
+typeSearchIndex = [{"p":"dominio","l":"Agua"},{"l":"All Classes","url":"allclasses-index.html"},{"p":"dominio","l":"Fuego"},{"p":"presentacion","l":"Interfaz"},{"p":"aplicacion","l":"Main"},{"p":"dominio","l":"Planta"},{"p":"dominio","l":"Pokedex"},{"p":"dominio","l":"Pokemon"}]
